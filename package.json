@@ -1,0 +1,20 @@
+{
+  "name": "action2md",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "action2md": "./bin/action2md"
+  },
+  "author": "Richard Simpson",
+  "license": "ISC",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "markdown-table": "^2.0.0",
+    "meow": "^6.1.0",
+    "yaml": "^1.8.3"
+  }
+}

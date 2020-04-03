@@ -1,0 +1,13 @@
+name: 'Example'
+description: 'Some Action'
+inputs:
+  a:
+    description: 'a'
+    required: true
+  b:
+    description: 'b'
+    required: false
+  c:
+    description: 'c'
+    default: 'foo'
+    required: false
