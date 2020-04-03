@@ -10,7 +10,7 @@
     "action2md": "./bin/action2md"
   },
   "author": "Richard Simpson",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "esm": "^3.2.25",
     "markdown-table": "^2.0.0",

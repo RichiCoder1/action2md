@@ -10,13 +10,15 @@ const cli = meow(`
 		Options
 		  --output, -o  Optionally, where to send output
 		  --help        Show help
-		  --version     Print package version 
+		  --version     Print package version
 
 		Examples
-		  $ action2md action.yaml
-		  |------|-------|------|
-		  | test |       | test |
-		  |------|-------|------|
+		  $ action2md
+		  | Input               | Description         | Default | Required |
+			| ------------------- | ------------------- | ------- | -------- |
+			| \`file\`              | Some important file |         | ✔        |
+			| \`optionA\`           | A                   |         |          |
+			| \`optionWithDefault\` | B                   | \`foo\`   |          |
 `, {
     flags: {
         output: {
@@ -27,16 +29,26 @@ const cli = meow(`
 });
 
 async function main() {
-	if (cli.input.length === 0) {
-		cli.showHelp();
-		return;
+	let targetYaml = cli.input[0];
+	if (!targetYaml) {
+		try {
+			const fileInfo = await fs.stat('action.yaml');
+			if (!fileInfo.isFile()) {
+				cli.showHelp();
+				return;
+			}
+			targetYaml = 'action.yaml';
+		} catch (e) {
+			cli.showHelp();
+			return;
+		}
+	} else {
+		const fileInfo = await fs.stat(targetYaml);
+		if (!fileInfo.isFile()) {
+			throw Error('You must provide a valid file as input.');
+		}
 	}
-
-	const fileInfo = await fs.stat(cli.input[0]);
-	if (!fileInfo.isFile()) {
-		throw Error('You must provide a valid file as input.');
-	}
-	const fileContents = await fs.readFile(cli.input[0]);
+	const fileContents = await fs.readFile(targetYaml);
 	const actionDescriptor = await YAML.parse(fileContents.toString());
 	
 	const inputs = Object

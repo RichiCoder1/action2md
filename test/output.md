@@ -1,5 +1,5 @@
-| Input | Description | Default | Required |
-| ----- | ----------- | ------- | -------- |
-| `a`   | a           |         | ✔        |
-| `b`   | b           |         |          |
-| `c`   | c           | `foo`   |          |
+| Input               | Description         | Default | Required |
+| ------------------- | ------------------- | ------- | -------- |
+| `file`              | Some important file |         | ✔        |
+| `optionA`           | A                   |         |          |
+| `optionWithDefault` | B                   | `foo`   |          |

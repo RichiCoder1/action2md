@@ -1,13 +1,13 @@
 name: 'Example'
 description: 'Some Action'
 inputs:
-  a:
-    description: 'a'
+  file:
+    description: 'Some important file'
     required: true
-  b:
-    description: 'b'
+  optionA:
+    description: 'A'
     required: false
-  c:
-    description: 'c'
+  optionWithDefault:
+    description: 'B'
     default: 'foo'
     required: false
